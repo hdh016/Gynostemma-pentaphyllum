@@ -1,0 +1,28 @@
+#nexus
+begin trees;
+tree tree_1 = [&R] (((((((huanggua:0.02186175086772538384,tiangua:0.02202760087780136766):0.03380818056363960739,donggua:0.03015565661513603529):0.00299258397017346245,(hulu:0.03121823686364346220,xigua:0.02371792946599091817):0.00404569577626674465):0.02379656457134229561,nangua:0.07018768350619629393):0.03084653651137206007,luohanguo:0.07288505645774792652):0.04787416285406639882,gujiaolan:0.11180834220940401302):0.19119232027866647772,grape:0.19119232027866647772);
+
+end;
+
+begin r8s;
+blformat lengths=persite nsites=1286514 ulrametric=no;
+MRCA ori1 grape gujiaolan ;
+MRCA ori2 huanggua tiangua;
+fixage taxon=ori1 age=110;
+constrain taxon=ori2 min_age=9 max_age=10.17
+#constrain taxon=ori3 min_age=7.1 max_age=8.08
+divtime method=PL crossv=yes cvstart=0 cvinc=1 cvnum=18;
+#set smoothing=100;
+set seed=3 num_time_guesses=3 num_restarts=3 maxiter=3000 verbose=0 smoothing=3;
+divtime method=PL algorithm=TN;
+
+describe plot=phylogram;
+describe plot=cladogram;
+describe plot=tree_description;
+describe plot=chrono_description;
+describe plot=phylo_description;
+describe plot=rato_description;
+showage;
+
+end;
+
